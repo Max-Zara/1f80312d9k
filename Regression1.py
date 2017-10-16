@@ -39,3 +39,40 @@ plt.xticks(())
 plt.yticks(())
 
 plt.show()
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas
+
+from mpl_toolkits.mplot3d import Axes3D
+
+from statsmodels.formula.api import ols
+
+from statsmodels.stats.anova import anova_lm
+
+#seq - x is a linear line from -5 to 5 with 21 series in between
+x = np.linspace(-5,5,21)
+
+X,Y = np.meshgrid(x,x)
+
+np.random.seed(1)
+
+Z = -5 + 3*X -0.5*Y + 8 * np.random.normal(size = X.shape)
+
+fig = plt.figure()
+ax = fig.gca(projection = '3d')
+surf = ax.plot_surface(X,Y,Z, cmap = plt.cm.coolwarm,
+                       rstride=1, cstride = 1)
+
+ax.view_init(20, -120)
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+
+X = X.flatten()
+Y = Y.flatten()
+Z = Z.flatten()
+
+data = pandas.DataFrame({'x':X,'y':Y,'z':Z})
+
