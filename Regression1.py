@@ -76,3 +76,7 @@ Z = Z.flatten()
 
 data = pandas.DataFrame({'x':X,'y':Y,'z':Z})
 
+model = ols("z ~ x + y",data).fit()
+
+print(model.summary())
+
