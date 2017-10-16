@@ -80,3 +80,11 @@ model = ols("z ~ x + y",data).fit()
 
 print(model.summary())
 
+print("\nRetrieving manually the parameter estimates")
+print(model._results.params)
+
+anova_results=anova_lm(model)
+
+print(anova_results)
+
+plt.show()
