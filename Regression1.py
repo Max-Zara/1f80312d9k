@@ -26,3 +26,16 @@ regr.fit(diabetes_X_train,diabetes_y_train)
 diabetes_y_pred = regr.predict(diabetes_X_test)
 
 print('Coefficients: \n',regr.coef_)
+
+print("Mean Squared Error: %.2f"
+% mean_squared_error(diabetes_y_test,diabetes_y_pred))
+
+print('Variance score: %.2f' % r2_score(diabetes_y_test,diabetes_y_pred))
+
+plt.scatter(diabetes_X_test, diabetes_y_test, color="black")
+plt.plot(diabetes_X_test, diabetes_y_pred, color="blue", linewidth=3)
+
+plt.xticks(())
+plt.yticks(())
+
+plt.show()
